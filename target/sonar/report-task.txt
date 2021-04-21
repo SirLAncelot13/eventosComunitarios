@@ -1,0 +1,6 @@
+projectKey=mx.gob.eventosComunitarios:eventosComunitarios
+serverUrl=http://localhost:9000
+serverVersion=8.8.0.42792
+dashboardUrl=http://localhost:9000/dashboard?id=mx.gob.eventosComunitarios%3AeventosComunitarios
+ceTaskId=AXj2dw5cbBchuPm2U9rk
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXj2dw5cbBchuPm2U9rk

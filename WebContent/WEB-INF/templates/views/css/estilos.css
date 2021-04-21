@@ -1,0 +1,61 @@
+.cabezera{
+  background-image: radial-gradient(circle at 37.72% 119.64%, #6d0ccb 0, #4706b5 25%, #11029e 50%, #000186 75%, #000070 100%);
+  -webkit-box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+  -moz-box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+  box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+}
+
+.card{
+  -webkit-box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+  -moz-box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+  box-shadow: -20px 17px 26px 8px rgba(0,0,0,0.32);
+margin-left: 20%;
+}
+
+
+
+#fondo{
+  background-color: rgb(253, 253, 253);
+}
+.imagen{
+   width:10;
+   height: 100%;
+}
+
+.formulario{
+   background-color: white;
+   -webkit-box-shadow: inset -30px 22px 69px 11px rgba(0,0,0,0.15);
+-moz-box-shadow: inset -30px 22px 69px 11px rgba(0,0,0,0.15);
+box-shadow: inset -30px 22px 69px 11px rgba(0,0,0,0.15);
+   padding:2%;
+   border-radius: 5%;
+   margin-bottom: 5%;
+}
+
+.btn-3d {
+   padding: .6rem 1rem;
+   border: 1px solid #995309;
+   border-radius: 4px;
+   background-color: #d9750b;
+   color: #fff;
+ 
+   font-size: 1rem;
+   text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+   box-shadow: 0 1px 0 rgba(255,255,255,.5) inset,
+     0 1px 3px rgba(0,0,0,.2);
+   background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,rgb(173, 163, 148)),to(#5e5b58));
+   background-image: linear-gradient(rgb(173, 163, 148) 10%,#5e5b58 100%);
+ }
+ 
+ .btn-3d:hover, .btn-3d:focus {
+   background-color: #e0811b;
+   background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#3739b3),to(rgb(55, 10, 139)));
+   background-image: linear-gradient(#3739b3 10%,rgb(55, 10, 139) 100%);
+ }
+ 
+ .btn-3d:active {
+   background-color: #cf6a00;
+   box-shadow: 0 2px 3px 0 rgba(0,0,0,.2) inset;
+   background-image: -webkit-gradient(linear,left top,left bottom,color-stop(10%,#f0a100),to(#f70));
+   background-image: linear-gradient(rgb(173, 163, 148) 10%,#5e5b58 100%);
+ }

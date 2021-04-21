@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+	integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+	crossorigin="anonymous" />
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+<title>Perfil</title>
+
+<style>
+.btn-link {
+	color: white;
+}
+
+.cuadroCentral {
+	margin-top: 5%;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding: 5%;
+	background-color: white;
+	box-shadow: 0px 0px 20px 1px gray;
+}
+
+.navbar-brand {
+	font-size: 20px;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	background-color: #A266DA;
+}
+
+.contenedor {
+	background-color: rgba(255, 255, 255, 0.8);
+	width: 90%;
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.logo {
+	font-size: 25px;
+	font-weight: 600;
+	color: #000;
+	text-decoration: none;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.menu a {
+	font-size: 22px;
+	border-bottom: 2px solid transparent;
+	margin-left: 40px;
+	color: #000;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.menu a:hover {
+	border-bottom: 2px solid #2009a5;
+}
+
+main .contenedor-img {
+	max-width: 60%;
+	margin-right: 40px;
+}
+
+.contenedor-texto .titulo {
+	font-size: 50px;
+	font-weight: normal;
+	margin-bottom: 40px;
+}
+
+.contenedor-texto .mascota {
+	font-weight: bold;
+	color: #2009a5;
+	font-style: normal;
+}
+
+.contenedor-texto p {
+	margin-bottom: 40px;
+	line-height: 36px;
+}
+
+.imagenRedonda {
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	border-radius: 150px;
+}
+
+.contenedorImagen {
+	background-color: #fff;
+	padding: 5px;
+	width: 100px;
+	border-radius: 150px;
+	margin-right: 15px;
+}
+
+.btn-link {
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 100px;
+	margin-right: 10px;
+	text-decoration: none;
+	background: #f2f2f2;
+}
+
+.btn-link:hover, .btn-link.activo {
+	color: #fff;
+	background: #5b4a9a;
+}
+
+@media screen and (max-width: 915px) {
+	main {
+		flex-direction: column;
+		text-align: center;
+	}
+	main .contenedor-img {
+		margin-bottom: 40px;
+	}
+}
+
+.botonCursos {
+	background-color: blue;
+	color: white;
+	text-transform: uppercase;
+	font-size: 30px;
+}
+
+.botonGestion {
+	background-color: darkblue;
+	color: white;
+	text-transform: uppercase;
+	font-size: 10px;
+}
+
+.btn-outline:hover, .btn-outline.activo {
+	color: #fff;
+	background: #7e07d6;
+}
+</style>
+</head>
+
+<body>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-light "
+		style="background-color: white;">
+
+		<div class="container-fluid">
+			<div class="contenedorImagen">
+				<div class="card-body" style="">
+					<img class="imagenRedonda" alt="Morelos Logo"
+						src="https://image.jimcdn.com/app/cms/image/transf/none/path/sa23828ee69d63a71/backgroundarea/i1377858141ec29e2/version/1539622028/image.png">
+				</div>
+			</div>
+
+			<a class="navbar-brand" style="color: #7e07d6;"> <strong>EVENTOS
+					COMUNITARIOS</strong></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav"
+				style="float: right;">
+				<ul class="navbar-nav w-100">
+
+					<li class="nav-item active"><a class="nav-link">
+							<form sec:authorize="hasRole('ROLE_USER')" action=""
+								th:action="@{/inscripcionPersona/all}" method="GET">
+								<button type="submit" class="btn btn-outline">Mis
+									cursos</button>
+							</form>
+					</a></li>
+
+					<li class="nav-item active"><a class="nav-link">
+							<form action="" th:action="@{/oferta/inscripcion/all}"
+								method="GET">
+								<button type="submit" class="btn btn-outline">Ofertas</button>
+							</form>
+					</a></li>
+
+
+					<li class="nav-item active"><a class="nav-link">
+							<form action="" th:action="@{/inscripcionPersona/historial}"
+								method="GET">
+								<button type="submit" class="btn btn-outline">Historial</button>
+							</form>
+					</a></li>
+
+
+					<li class="nav-item active"><a class="nav-link">
+							<form action="" th:action="@{/usuario/one}" method="GET">
+								<button type="submit" class="btn btn-outline">
+									<i class="fas fa-user-circle"></i> Mi perfil
+								</button>
+							</form>
+					</a></li>
+
+					<li class="nav-item ms-auto"><a class="nav-link"> <a
+							class="nav-link">
+								<form action="" id="formLogout" th:action="@{/logout}"
+									method="GET">
+									<button type="button" onclick="validFormLogout(event)"
+										class="btn btn btn-outline" style="border-color: #7e07d6">Cerrar
+										sesion</button>
+								</form>
+						</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="contenedorPrincipal">
+		<div class="row cuadroCentral">
+
+			<h3>
+				<strong> MIS CURSOS </strong> - EVENTOS COMUNITARIOS
+			</h3>
+			<hr>
+			<main>
+				<div class="row">
+					<div class="col-lg-12 table-responsive">
+						<div class="col-lg-12 contenedorCards">
+
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="home-tab"
+										data-bs-toggle="tab" data-bs-target="#home" type="button"
+										role="tab" aria-controls="home" aria-selected="true">Individual</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+										data-bs-target="#profile" type="button" role="tab"
+										aria-controls="profile" aria-selected="false">Equipo</button>
+								</li>
+
+							</ul>
+
+							<div class="tab-content" id="myTabContent">
+
+
+								<div class="tab-pane fade show active" id="home" role="tabpanel"
+									aria-labelledby="home-tab">
+
+									<div class="col-lg-12 mt-3">
+										<div class="row row-cols-1 row-cols-md-3 g-3">
+											<div class="col" th:each="item, iStat: ${listaPersona}">
+
+												<div class="card h-100">
+													<img alt="..."
+														th:src="@{'/uploads/category/'+${{item.oferta.evento.imagen}}}"
+														class="card-img-top">
+
+
+													<div class="card-boddy">
+
+														<form class="sombraCard" action=""
+															th:action="@{'/inscripcion/cancelar/'+${item.idPersona}}"
+															method="GET" th:object="${inscripcionPersona}"
+															style="padding: 5%; border-color: blue; border-radius: 10px;">
+
+															<p class="card-text">
+																<input type="hidden" th:value="${item.oferta.idOferta}" />
+															<h5>
+																<strong><i class="fas fa-calendar-day"> </i>
+																	Nombre del curso: </strong>
+															</h5>
+															<label class="card-title"
+																th:text="${item.oferta.evento.nombre}"></label>
+															<h5>
+																<strong><i class="fas fa-info-circle"> </i>
+																	Detalles de evento: </strong>
+															</h5>
+															<label class="card-text"
+																th:text="${item.oferta.detalles}"></label>
+															<h5>
+																<strong><i class="fas fa-money-bill-wave">
+																</i> Costo: </strong>
+															</h5>
+															<label class="card-text"
+																th:text="${item.oferta.evento.costo}"></label>
+															<div class="d-grip gap-2"
+																style="justify-content: center; align-items: center;">
+																<button type="submit" class="btn btn-primary">Cancelar</button>
+															</div>
+														</form>
+													</div>
+
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="tab-pane fade" id="profile" role="tabpanel"
+									aria-labelledby="profile-tab">
+									<!-- 3 cards -->
+									<div class="col-lg-12 mt-3">
+										<div class="row row-cols-1 row-cols-md-3 g-3">
+											<div class="col" th:each="item, iStat: ${listaEquipo}">
+
+												<div class="card h-100">
+													<img alt="..."
+														th:src="@{'/uploads/category/'+${{item.oferta.evento.imagen}}}"
+														class="card-img-top">
+
+
+													<div class="card-boddy">
+
+														<form class="sombraCard" action=""
+															th:action="@{'/inscripcion/cancelar/'+${item.idEquipo}}"
+															method="GET" th:object="${inscripcionPersona}"
+															style="padding: 5%; border-color: blue; border-radius: 10px;">
+
+															<p class="card-text">
+																<input type="hidden" th:value="${item.oferta.idOferta}" />
+															<h5>
+																<strong><i class="fas fa-calendar-day"> </i>
+																	Nombre del curso: </strong>
+															</h5>
+															<label class="card-title"
+																th:text="${item.oferta.evento.nombre}"></label>
+															<h5>
+																<strong><i class="fas fa-info-circle"> </i>
+																	Detalles de evento: </strong>
+															</h5>
+															<label class="card-text"
+																th:text="${item.oferta.detalles}"></label>
+															<h5>
+																<strong><i class="fas fa-money-bill-wave">
+																</i> Costo: </strong>
+															</h5>
+															<label class="card-text"
+																th:text="${item.oferta.evento.costo}"></label>
+															<div class="d-grip gap-2"
+																style="justify-content: center; align-items: center;">
+																<button type="submit" class="btn btn-primary">Cancelar</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+
+	<footer style="margin-top: 3%">
+		<div class="row">
+			<div class="col-lg-12"
+				style="background-color: #5b4a9a; color: white; text-align: center;">
+				<p class="small">
+					<strong>Cuernavaca Morelos 2018-2024</strong>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.all.min.js"></script>
+	<script src="https://kit.fontawesome.com/938364cfa6.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+		integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+		integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+		integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+		integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+		crossorigin="anonymous"></script>
+
+	<script>
+		
+		function validFormLogout(event) {
+			Swal.fire({
+				  title: '¿Cerrar sesión?',
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: 'Salir'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    Swal.fire(
+				      'Sesión cerrada correctamente',
+				      'success'
+				    ).then((result) => {
+						document.getElementById("formLogout").submit();
+					});
+				  }
+				});
+
+		}
+		</script>
+</body>
+
+</html>

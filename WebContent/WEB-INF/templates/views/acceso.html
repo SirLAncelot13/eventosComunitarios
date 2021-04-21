@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.css">
+<script src="https://kit.fontawesome.com/938364cfa6.js"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+
+
+<title>Oferta</title>
+
+<style>
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+body {
+	min-height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	background-image: linear-gradient(120deg, #5b4a9a 30%, #5b4a9a 50%);
+	display: flex;
+	align-items: center;
+}
+
+.contenedor {
+	background-color: #fff;
+	width: 90%;
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 80px;
+	-webkit-box-shadow: -40px 32px 46px -11px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: -40px 32px 46px -11px rgba(0, 0, 0, 0.46);
+	box-shadow: -40px 32px 46px -11px rgba(0, 0, 0, 0.46);
+	padding-left: 3%;
+	padding-right: 3%;
+	border-radius: 40px;
+	background-color: #F8F4F4;
+}
+
+.logo {
+	font-size: 25px;
+	font-weight: 600;
+	color: #000;
+	text-decoration: none;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.menu a {
+	font-size: 22px;
+	border-bottom: 2px solid transparent;
+	margin-left: 40px;
+	color: #000;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.menu a:hover {
+	border-bottom: 2px solid #2009a5;
+}
+
+main {
+	
+}
+
+main .contenedor-img {
+	max-width: 60%;
+	margin-right: 40px;
+}
+
+.contenedor-texto .titulo {
+	font-size: 50px;
+	font-weight: normal;
+	margin-bottom: 40px;
+}
+
+.contenedor-texto .mascota {
+	font-weight: bold;
+	color: #2009a5;
+	font-style: normal;
+}
+
+.contenedor-texto p {
+	margin-bottom: 40px;
+	line-height: 36px;
+}
+
+.btn-link {
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 100px;
+	margin-right: 10px;
+	text-decoration: none;
+	background: #f2f2f2;
+}
+
+.btn-link:hover, .btn-link.activo {
+	color: #fff;
+	background: #5b4a9a;
+}
+
+@media screen and (max-width: 915px) {
+	main {
+		flex-direction: column;
+		text-align: center;
+	}
+	main .contenedor-img {
+		margin-bottom: 40px;
+	}
+}
+
+.btnRegistrar {
+	margin-top: 3%;
+}
+
+.imagenRedonda {
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	border-radius: 150px;
+}
+
+.contenedorImagen {
+	background-color: #fff;
+	padding: 5px;
+	width: 100px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	-webkit-box-shadow: 1px 1px 10px #484848;
+	border-radius: 150px;
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.contenedorTabla {
+	background-image: linear-gradient(to bottom, #13214e, #20295b, #2e3168, #3b3975, #494182,
+		#51478b, #5a4c95, #63529e, #6857a5, #6d5bad, #7360b4, #7865bc);
+	-webkit-box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+	box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+}
+
+.tablaEstilos {
+	color: white;
+	background-image: linear-gradient(to bottom, #13214e, #20295b, #2e3168, #3b3975, #494182,
+		#51478b, #5a4c95, #63529e, #6857a5, #6d5bad, #7360b4, #7865bc);
+}
+
+.get_in_touch {
+	max-width: 800px;
+	margin: 50px auto;
+	position: relative;
+	box-shadow: 0 10px 30px 0px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	background: rgba(255, 255, 255, .4);
+	background: no-repeat;
+}
+
+.get_in_touch .title {
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 3em;
+	line-height: 48px;
+	padding-bottom: 20px;
+	color: #5543ca;
+	background: linear-gradient(to right, #f4524d 0%, #5543ca 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.contact-form .form-field {
+	position: relative;
+	margin: 32px 0;
+}
+
+.contact-form .input-text {
+	display: block;
+	width: 100%;
+	height: 36px;
+	border-width: 0 0 2px 0;
+	border-color: "5543ca";
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 400;
+}
+
+.contact-form .input-text:focus {
+	outline: none;
+}
+
+.contact-form label {
+	position: initial;
+	left: 20px;
+	bottom: 11px;
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 400;
+	color: #5543ca;
+	cursor: text;
+	text-transform: capitalize;
+	transition: transform 0.2s ease-in-out;
+}
+
+.contact-form .submit-btn {
+	margin-top: 3%;
+	display: inline-block;
+	background-image: linear-gradient(125deg, #a72879, #064497);
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 16px;
+	padding: 8px 16px;
+	border: none;
+	width: 200px;
+	cursor: pointer;
+}
+
+.divImagen {
+	background-image: url("");
+}
+</style>
+</head>
+
+<body>
+
+	<div class="contenedor divImagen">
+		<header>
+
+			<div class="contenedorImagen">
+				<div class="card-body" style="text-align: center;">
+					<img class="imagenRedonda" alt="Morelos Logo"
+						src="https://image.jimcdn.com/app/cms/image/transf/none/path/sa23828ee69d63a71/backgroundarea/i1377858141ec29e2/version/1539622028/image.png">
+				</div>
+			</div>
+
+			<h1>
+				<strong style="color: #5b4a9a;"> Cambios </strong>- EVENTOS
+				COMUNITARIOS
+			</h1>
+
+			<form action="" th:action="@{/}" method="GET">
+				<button type="submit" class="btn btn-primary botonSalir">Regresar</button>
+			</form>
+
+		</header>
+
+		<main>
+			<div class="row" style="padding-left: 3%; padding-right: 3%;">
+				<!--Curso-->
+				<h1>No tienes acceso a este recurso</h1>
+
+
+
+			</div>
+			<footer style="margin-top: 3%">
+				<div class="row">
+					<div class="col-lg-12"
+						style="background-color: #5b4a9a; color: white; text-align: center;">
+						<p class="small">
+							<strong>Cuernavaca Morelos 2018-2024</strong>
+						</p>
+					</div>
+				</div>
+			</footer>
+		</main>
+	</div>
+
+		<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.all.min.js"></script>
+	<script src="https://kit.fontawesome.com/938364cfa6.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.3/sweetalert2.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+		integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+		integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+		integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+		integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+		crossorigin="anonymous"></script>

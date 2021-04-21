@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+
+
+<style>
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+body {
+	min-height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	background-color: #A266DA;
+	align-items: center;
+}
+
+.contenedor {
+	background-color: #fff;
+	width: 40%;
+	margin: 40px auto;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.logo {
+	font-size: 25px;
+	font-weight: 600;
+	color: #000;
+	text-decoration: none;
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.menu a {
+	font-size: 22px;
+	border-bottom: 2px solid transparent;
+	margin-left: 40px;
+	color: #000;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.menu a:hover {
+	border-bottom: 2px solid #2009a5;
+}
+
+main {
+	
+}
+
+main .contenedor-img {
+	max-width: 60%;
+	margin-right: 40px;
+}
+
+.contenedor-texto .titulo {
+	font-size: 50px;
+	font-weight: normal;
+	margin-bottom: 40px;
+}
+
+.contenedor-texto .mascota {
+	font-weight: bold;
+	color: #2009a5;
+	font-style: normal;
+}
+
+.contenedor-texto p {
+	margin-bottom: 40px;
+	line-height: 36px;
+}
+
+.btn-link {
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 100px;
+	margin-right: 10px;
+	text-decoration: none;
+	background: #f2f2f2;
+}
+
+.btn-outline:hover, .btn-outline.activo {
+	color: #fff;
+	background: #7e07d6;
+}
+
+@media screen and (max-width: 915px) {
+	main {
+		flex-direction: column;
+		text-align: center;
+	}
+	main .contenedor-img {
+		margin-bottom: 40px;
+	}
+}
+
+.imagenRedonda {
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	border-radius: 150px;
+}
+
+.contenedorImagen {
+	background-color: #fff;
+	padding: 5px;
+	width: 100px;
+	border-radius: 150px;
+	margin-right: 15px;
+}
+
+.contenedorTabla {
+	background-image: linear-gradient(to bottom, #13214e, #20295b, #2e3168, #3b3975, #494182,
+		#51478b, #5a4c95, #63529e, #6857a5, #6d5bad, #7360b4, #7865bc);
+	-webkit-box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+	box-shadow: -2px 9px 37px 8px rgba(0, 0, 0, 0.46);
+}
+
+.tablaEstilos {
+	color: white;
+	background-image: linear-gradient(to bottom, #13214e, #20295b, #2e3168, #3b3975, #494182,
+		#51478b, #5a4c95, #63529e, #6857a5, #6d5bad, #7360b4, #7865bc);
+}
+
+.get_in_touch {
+	max-width: 800px;
+	margin: 50px auto;
+	position: relative;
+	box-shadow: 0 10px 30px 0px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	background: rgba(255, 255, 255, .4);
+	background: no-repeat;
+}
+
+.get_in_touch .title {
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 3em;
+	line-height: 48px;
+	padding-bottom: 20px;
+	color: #A266DA;
+}
+
+.contact-form .form-field {
+	position: relative;
+	margin: 32px 0;
+}
+
+.contact-form .input-text {
+	display: block;
+	width: 100%;
+	height: 36px;
+	border-width: 0 0 2px 0;
+	border-color: "5543ca";
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 400;
+}
+
+.contact-form .input-text:focus {
+	outline: none;
+}
+
+.contact-form label {
+	position: initial;
+	left: 20px;
+	bottom: 11px;
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 400;
+	color: #5543ca;
+	cursor: text;
+	text-transform: capitalize;
+	transition: transform 0.2s ease-in-out;
+}
+
+.contact-form .submit-btn {
+	margin-top: 3%;
+	display: inline-block;
+	background-image: linear-gradient(125deg, #a72879, #064497);
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 16px;
+	padding: 8px 16px;
+	border: none;
+	width: 200px;
+	cursor: pointer;
+}
+
+.divImagen {
+	background-image: url("");
+}
+</style>
+<script src="https://kit.fontawesome.com/938364cfa6.js"
+	crossorigin="anonymous"></script>
+
+<title>Login</title>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light "
+		style="background-color: white;">
+
+		<div class="container-fluid">
+			<div class="contenedorImagen">
+				<div class="card-body" style="">
+					<img class="imagenRedonda" alt="Morelos Logo"
+						src="https://image.jimcdn.com/app/cms/image/transf/none/path/sa23828ee69d63a71/backgroundarea/i1377858141ec29e2/version/1539622028/image.png">
+				</div>
+			</div>
+
+			<a class="navbar-brand" style="color: #7e07d6;"> <strong>INICIO
+					DE SESI&Oacute;N</strong></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav"
+				style="float: right;">
+				<ul class="navbar-nav w-100">
+					<li class="nav-item active"><a class="nav-link">
+							<form action="" th:action="@{/oferta/inscripcion/all}"
+								method="GET">
+								<button type="submit" class="btn btn-outline">
+									<i class="fas fa-calendar-day"></i> Ver cursos
+								</button>
+							</form>
+					</a></li>
+
+
+					<li class="nav-item active ms-auto"><a class="nav-link">
+							<form action="" th:action="@{/}" method="GET">
+								<button type="submit" class="btn btn-outline"
+									style="border-color: #7e07d6">
+									<i class="fas fa-arrow-circle-left"></i> Regresar
+								</button>
+							</form>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="contenedor divImagen">
+		<main>
+			<div class="" style="">
+				<!--Curso-->
+				<div class="col-md-12"
+					style="margin-bottom: 3%; color: white; padding-left: 20%">
+					<img
+						src="https://www.datatur.sectur.gob.mx/SiteCollectionImages/Intranet/TurismoEstados/17_morNAdmon.png"
+						alt="" style="width: 80%; height: 100%;" class="img-fluid">
+				</div>
+
+				<div class="col-md-12" style="margin-bottom: 3%; color: white;">
+					<div class="row my-5">
+						<div class="col-lg-12">
+							<div th:if="${param.error}" class="alert alert-danger"
+								style="align-items: center; justify-content: center;">
+								Usuario y/o contrase&ntilde;a</div>
+							<form method="POST" th:action="@{/login}" action="#"
+								style="padding-left: 15%; padding-right: 15%;">
+								<label class="form-label">Email</label> <input name="username"
+									class="form-control" type="email"
+									placeholder="Correo electronico"> <label
+									class="form-label">Contrase&ntilde;a</label> <input
+									name="password" class="form-control" type="password"
+									placeholder="Min 8 caracteres">
+								<div class="d-grip gap-2" style="margin-top: 15px">
+									<button class="btn btn-primary" style="margin-top: 3%">
+										<i class="fas fa-sign-in-alt"></i> Ingresar
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</main>
+	</div>
+	<footer style="margin-top: 3%">
+		<div class="row">
+			<div class="col-lg-12"
+				style="background-color: #5b4a9a; color: white; text-align: center;">
+				<p class="small">
+					<strong>Cuernavaca Morelos 2018-2024</strong>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+		crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
